@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 public class MainActivity extends AppCompatActivity {
     // Create a private member variable that can hold our WebView
@@ -23,24 +24,16 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        // The FAB-code can be removed
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        WebView webView = (WebView) findViewById(R.id.web);
+        WebViewClient app = new WebViewClient();
+        webView.setWebViewClient(app);
 
-        WebView webView = new WebView(this);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
-        setContentView(webView);
-        //webView.loadUrl("https://wwwlab.iit.his.se/b17robev/MobilAppDesign/project/");
+        webView.loadUrl("https://wwwlab.iit.his.se/b17robev/MobilAppDesign/project/");
 
-        webView.loadUrl("file:///android_asset/about.html");
+        // webView.loadUrl("file:///android_asset/about.html");
     }
 
     @Override
